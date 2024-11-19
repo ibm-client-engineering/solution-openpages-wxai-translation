@@ -1,0 +1,36 @@
+---
+title: Translate User Fields
+sidebar_position: 1
+description: sample page
+custom_edit_url: null
+---
+<div style={{ borderBottom: '1px solid #000', marginTop: '20px', marginBottom: '20px' }}></div>
+There are two ways to translate the user-inputted fields on the OpenPages platform:
+* The integrated *OpenPages Translation Service*:
+    - simulate the NeuralSeek configuration by mimicing the UI experience with the translation button.
+* Leverage *Custom Machine Learning Models* to provide the translatations
+
+## Method 1: Native Translation Service
+------
+
+
+
+
+## Method 2: Custom Translation Service
+-----
+### Where it's used
+
+1. Navigate to any page within OpenPages where the translation button appears.
+
+    ![translation button](https://media.github.ibm.com/user/386696/files/9c44f1f6-3498-4c83-9c41-58ec3995f481)
+
+2. Depening on what locale the user is in, the button will translate the fields to that target locale language.
+    
+    *Example below w/ japanese locale*
+    ![translation button 2](https://media.github.ibm.com/user/386696/files/8a278b7f-f1b7-4457-b379-8409046e128a)
+
+### How to Implement
+
+To translate the necessary headers/labels with wx.ai an API wrapper is required to simulate the API response that is expected from the NeuralSeek configuration within OpenPages.
+
+Navigate [here](https://cloud.ibm.com/resources) for a walkthrough on how to implement the API wrapper.

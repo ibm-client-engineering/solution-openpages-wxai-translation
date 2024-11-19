@@ -1,0 +1,68 @@
+---
+title: Translate Headers and Labels
+sidebar_position: 1
+description: sample page
+custom_edit_url: null
+---
+
+<div style={{ borderBottom: '1px solid #000', marginTop: '20px', marginBottom: '20px' }}></div>
+Aside from the default feature of using the "Locale" to translate the headers and labels, translatations can be carried out through three methods:
+* Method 1: Translate via native *OpenPages Translation Service*.
+* Method 2: Translate via Custom API Endpoint.
+* Method 3: Translating and reuploading the configuration exports within OpenPages.
+
+## Method 1: Translate via native *OpenPages Translation Service*.
+--------
+
+
+
+## Method 2: Custom Translation Service
+--------
+
+### Where it's used
+
+Translations on the headers and labels can be carried out on the OpenPages platform through the "System Configuration" and/or "Application Text", etc. by using the connected transltion service.
+
+1. Navigate to the "Open Administrator Menu", select "System Configuration", and select either "Application Text" or "Object Text".
+
+    ![Object Text](https://media.github.ibm.com/user/386696/files/1a50c0d2-bb16-43ab-838a-a0549091a235)
+
+2. Select one of the items in the list, and select "Auto Translate" in the pop-up window on the right to carry out the relevant translations. Click "Done".
+
+    ![Object Text 2](https://media.github.ibm.com/user/386696/files/72a643bc-1d3d-4605-acbb-89f12632b410)
+
+
+### How to Implement
+
+To translate the necessary headers/labels with wx.ai an API wrapper is required to simulate the API response that is expected from the NeuralSeek configuration within OpenPages.
+
+Navigate [here](https://cloud.ibm.com/resources) for a walkthrough on how to implement the API wrapper.
+
+
+
+
+
+## Method 3: Translate Configuration Export
+--------
+
+### Where it's used
+
+Another way to translate the headers/labels for the OpenPages platform is by exporting the necessary configuration files, translating the data, and then re-importing the translated configuration file back into the OpenPages platform.
+
+**Export the configuration**
+1. Navigate to the "Open Administrator Menu", select "System Migration", and choose either "Export Configuration".
+
+    ![Export Config](https://media.github.ibm.com/user/386696/files/6b8437d7-0b39-42bc-8f0e-ccdc83bb8f7c)
+2. Select "Add Items +", choose "Application Text" from the list and select all necessary items and select "Select"
+
+    ![Export Config 2](https://media.github.ibm.com/user/386696/files/f32ccb19-cd94-443a-8b50-0d77e84fede2)
+
+**Translate the exported configuration file with wx.ai**
+
+**Import the configuration**
+1. Navigate to the "Open Administrator Menu", select "System Migration", and choose either "Import Configuration".
+
+    ![Import Config](https://media.github.ibm.com/user/386696/files/6b8437d7-0b39-42bc-8f0e-ccdc83bb8f7c)
+
+### How to Implement
+
