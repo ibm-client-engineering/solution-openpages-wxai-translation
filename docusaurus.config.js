@@ -22,13 +22,13 @@ async function createconfig() {
     url: "https://ibm-client-engineering.github.io",
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often "/<projectName>/"
-    baseUrl: "/insert-solution-name",
+    baseUrl: "/solution-openpages-wxai-translation",
 
 
     // GitHub pages deployment config.
     // If you aren"t using GitHub pages, you don"t need these.
     organizationName: "ibm-client-engineering", // Usually your GitHub org/user name.
-    projectName: "insert-solution-name", // Usually your repo name.
+    projectName: "solution-openpages-wxai-translation", // Usually your repo name.
 
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
@@ -130,7 +130,7 @@ async function createconfig() {
           },
         },
         navbar: {
-          title: "| Insert Solution Name",
+          title: "| Openpages watsonx.ai Translation",
           logo: {
             alt: "IBM Client Engineering Logo",
             src: "img/logo.svg",
@@ -147,7 +147,7 @@ async function createconfig() {
             // },
             {to: "flight-logs", label: "Flight Logs", position: "right"},
             {
-              href: "https://github.com/ibm-client-engineering/insert-solution-name",
+              href: "https://github.com/ibm-client-engineering/solution-openpages-wxai-translation",
               className: "header-github-link",
               position: "right",
             },
