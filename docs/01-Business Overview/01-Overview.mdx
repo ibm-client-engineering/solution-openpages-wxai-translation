@@ -13,7 +13,7 @@ The goal of this solution doc is to outline a clear and actionable plan for impl
 * **User Inputted fields**
     - All the text assiciated with the content in which users can input on the OpenPages platform.
 
-This solution doc will address how to implement a translation method for each of the areas mentioned above, as well as outline the necessary requirements for building out each solution component to ultimately demonstrate a successful implementation of a watsonx.ai driven translation service.
+This solution doc will address how to implement a translation method for each of the areas mentioned above, as well as outline the necessary requirements for building out each solution component to ultimately demonstrate a successful implementation of a watsonx.ai driven translation service on the OpenPages platform.
 
 ### Business Statement
 
@@ -28,41 +28,41 @@ A client needs to explore different options for multi-lingual support in various
 * Mitigated third party risk of introducing new vendor as a part of this solution​ 
 * Seamless user experience for translating OpenPages text​
 
-## Solution Components
+## Solution Overview
 -----
 
-Content on OpenPages can be fall under one of the two groups:
-#### **Headers and labels:**
-The header and labels on the OpenPages platform refers to the static text on the platform.
-    A header is a prominent text element used as titles for pages, sections, or major content areas. Examples include:
-    * Page titles (e.g., "Dashboard")
-    * Section titles (e.g., "Account Information")
-    * Navigation titles (e.g., "Home")
-#### **User-inputted fields**
+OpenPages content that can be translated falls under one of the two groups:
+
+1. **User fields**
 A label is a descriptive text for controls or input fields, helping users understand actions or required information. Examples include:
     * Button text (e.g., "Submit")
     * Dropdown text (e.g., "Select a Country")
     * Form field labels (e.g., "Username")
 
+2. **Headers and labels:**
+The header and labels on the OpenPages platform refers to the static text on the platform.
+    A header is a prominent text element used as titles for pages, sections, or major content areas. Examples include:
+    * Page titles (e.g., "Dashboard")
+    * Section titles (e.g., "Account Information")
+    * Navigation titles (e.g., "Home")
+
 
 ### Translation Methods
-Headers and labels, and User-Inputted Fields, can each be translated through different methods:
-    ![translation methods](https://media.github.ibm.com/user/386696/files/8fd33817-150e-4cd9-8e6f-550571d63c89)
+User fields and "headers and labels" can be translated through different methods:
 
-    Click [here](/Business%20Overview/Use%20Cases/Translate%20Headers%20and%20Labels) for more information on where and how the capability of translating headers and labels can be addressed.
-
-    Click [here](/Business%20Overview//Use%20Cases/Translate%20User%20Fields) for more information on where and how the capability of translating headers and labels can be addressed.
+![translation methods](../../static/img/Translation_Methods.png)
 
 
 #### <font color="#000080"> <b> watsonx.ai Translation Service </b> </font>
 
 #### <font color="#000080"> <b> Custom Translation Service </b> </font>
 
-**Goal:** Replicate Watson Language Translator and/or NeuralSeek's translation behahavior by providing transient transaltions across all user-inputted fiels with the click of a button.
+**Goal:** Replicate Watson Language Translator and/or NeuralSeek's translation behahavior by providing transient translations across all user-inputted fields with the click of a button.
 
 **Solution:** Develop an API wrapper to provide translations with wxai while also referencing any custom dictionaries, which specify and clearly define the prefered transaltions of certain headers/labels from the client.
 
-**How to implement:** Go
+**How to implement:** TODO
+
 #### <font color="#000080"> <b> Translate OpenPages Configuration Export </b> </font>
 **Goal:** Perform a bulk update to the translation values of headers and labels on OpenPages.
 
