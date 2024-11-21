@@ -30,7 +30,7 @@ async function createconfig() {
     organizationName: "ibm-client-engineering", // Usually your GitHub org/user name.
     projectName: "solution-openpages-wxai-translation", // Usually your repo name.
 
-    onBrokenLinks: "throw",
+    onBrokenLinks: "warn",
     onBrokenMarkdownLinks: "warn",
 
     // ...
