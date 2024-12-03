@@ -7,8 +7,8 @@ custom_edit_url: null
 
 <div style={{ borderBottom: '1px solid #000', marginTop: '20px', marginBottom: '20px' }}></div>
 Aside from the default feature of using the "Locale" to translate the headers and labels, translatations can be carried out through two methods:
-* Method 1: Translate Individual Items from the UI.
-* Method 2: Translating and reuploading the configuration exports within OpenPages.
+* **Method 1:** Translate Individual Items from the UI.
+* **Method 2:** Translating and reuploading the configuration exports within OpenPages.
 
 ## Method 1: Translate Individual Items from the UI.
 --------
@@ -28,15 +28,17 @@ Translations on the headers and labels can be carried out on the OpenPages platf
 
 ### How to Implement
 
-The UI-based translation can be set up to work with either a native translation service or a custom API wrapper.
+The UI-based translation can be configured one of two ways:
+1. OpenPages watsonx.ai translation service
 
-To translate using one of the two native translation services (NeuralSeek/watsonx.ai), complete the setup process as described in the [product documentation](https://www.ibm.com/docs/en/openpages/9.0.0?topic=integrations-translation-services). See [here](../../Create/Translate%20User%20Fields/Native%20Translation%20Service) for more information.
+    To translate using one of the two native translation services (NeuralSeek/watsonx.ai), complete the setup process as described in the [product documentation](https://www.ibm.com/docs/en/openpages/9.0.0?topic=integrations-translation-services). See [here](../../Create/Translate%20User%20Fields/Native%20Translation%20Service) for more information.
 
-To translate the necessary headers/labels with wx.ai an API wrapper is required to simulate the API response that is expected from the NeuralSeek configuration within OpenPages. Navigate [here](../../Create/Translate%20User%20Fields/Custom%20API%20Endpoint) for a walkthrough on how to implement the API wrapper.
+2. Custom translation service
+
+    To translate the necessary headers/labels with wx.ai an API wrapper is required to simulate the API response that is expected from the NeuralSeek configuration within OpenPages. Navigate [here](../../Create/Translate%20User%20Fields/Custom%20API%20Endpoint) for a walkthrough on how to implement the API wrapper.
 
 
-
-## Method 3: Translate Configuration Export
+## Method 2: Translate Configuration Export
 --------
 
 ### Where it's used
@@ -68,4 +70,5 @@ The configuration export file also includes code for downloading an excel file f
     ![Import Config](../../../images/import.png)
 
 ### How to Implement
+* Work in progress
 
