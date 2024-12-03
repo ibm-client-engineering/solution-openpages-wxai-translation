@@ -5,9 +5,11 @@ description: Considerations for creating a custom translation service for OpenPa
 custom_edit_url: null
 ---
 <div style={{ borderBottom: '1px solid #000', marginTop: '20px', marginBottom: '20px' }}></div>
+## Overview
+----
+The content within user fields can be translated using a custom translation service that replicates the payload and output of the platform's native translation API. This flexibility enables OpenPages users to implement custom code and processes tailored to their specific business needs and requirements.
 
-### Translating with NeuralSeek from an OpenPages perspective
-To initially validate a NeuralSeek endpoint for translation, OpenPages will send a POST request to `<endpoint>/translate/` with the body `{text: ["test connection"], "target": "en"}` (be aware that it will use a trailing slash, which may cause issues for some backend frameworks). This is also the same format that OpenPages will use for all translation requests, always with a single string in the target field's array and with no indication of source language.
+To initially validate an OpenPages translation endpoint, OpenPages will send a POST request to `<endpoint>/translate/` with the body `{text: ["test connection"], "target": "en"}` (be aware that it will use a trailing slash, which may cause issues for some backend frameworks). This is also the same format that OpenPages will use for all translation requests, always with a single string in the target field's array and with no indication of source language.
 
 The output that OpenPages expects is: 
 ```json
@@ -19,10 +21,28 @@ The output that OpenPages expects is:
     "word_count": <int>
 }
 ```
+:::note
+OpenPages will also send the API key that you provide as basic authorization but this is optional.
+:::
 
-OpenPages will also send the API key that you provide as basic authorization. For the purposes of our POC we ignored it.
+## Technical Details
+------
 
-### Translating with OpenPages from a NeuralSeek mimic perspective
+When creating the `/translate` endpoint there are two steps to completing the translation using an LLM. The first step is to identify the source language, which we did by using a prompt that gave a the LLM only two options. This probably improved the accuracy of the source language detection but its proficiency in dinstinguishing a wider variety of lanugages is unknown.
+
+The second step is to do the translation, using the source language information determined in the first step. We wanted the prompt to be modular enough so that we could use it for any combination of source and target language, although in our case we are only using it for English -> Japanese. To that end, we kept a dictionary of examples for the same phrase in every language we wanted to support for this translation, so that we could easily access the translation examples for the LLM to use. We also directed the LLM to output the translation within a JSON object, which allows us to use the closed curly bracket "}" as a stop sequence.
+
+There are many tools that can be leveraged to host the `/translate` endpoint:
+* Code Engine on IBM Cloud
+* AWS Lambda on AWS
+* [Openshift Source-to-image (S2I)](https://docs.openshift.com/container-platform/4.17/openshift_images/using_images/using-s21-images.html)
+
+### **Code Engine on IBM Cloud**
+For this use case/pilot we leveraged IBM Code Engine, which can run containers in a fairly straightforward way. Code Engine uses an x86 architecture, so when you build the container image for the translation endpoint specify at least the `linux/amd64` platform. We built the image using podman buildx and hosted it on dockerhub. From there, you can create a new application on Code Engine and specify the Image reference as the image you pushed to dockerhub. As long as the image repo you pushed it to is public, you shouldn't need a registry secret. In addition, this application doesn't need a lot of power to run, so you can be conservative with the allocation of compute resources. You also will not need more than one instance of the container.
+
+There's also a `/history` endpoint for debugging, as we do not recommend.
+
+:::tip
 The main step you need to complete before running the application is to create a `.env` file with the requisite credentials:
 
 ```bash
@@ -30,17 +50,9 @@ WX_PROJECT_ID=<watsonx Project ID>
 WX_API_KEY=<watsonx API Key>
 WX_API_URL=<watsonx API url>
 ```
-
-### Technical details
-When creating the `/translate` endpoint there are two steps to completing the translation using an LLM. The first step is to identify the source language, which we did by using a prompt that gave a the LLM only two options. This probably improved the accuracy of the source language detection but its proficiency in dinstinguishing a wider variety of lanugages is unknown.
-
-The second step is to do the translation, using the source language information determined in the first step. We wanted the prompt to be modular enough so that we could use it for any combination of source and target language, although in our case we are only using it for English -> Japanese. To that end, we kept a dictionary of examples for the same phrase in every language we wanted to support for this translation, so that we could easily access the translation examples for the LLM to use. We also directed the LLM to output the translation within a JSON object, which allows us to use the closed curly bracket "}" as a stop sequence.
-
-To host this endpoint, we utilized IBM Code Engine, which can run containers in a fairly straightforward way. Code Engine uses an x86 architecture, so when you build the container image for the translation endpoint specify at least the `linux/amd64` platform. We built the image using podman buildx and hosted it on dockerhub. From there, you can create a new application on Code Engine and specify the Image reference as the image you pushed to dockerhub. As long as the image repo you pushed it to is public, you shouldn't need a registry secret. In addition, this application doesn't need a lot of power to run, so you can be conservative with the allocation of compute resources. You also will not need more than one instance of the container.
-
-There's also a `/history` endpoint for debugging, as we do not recommend trying to use Code Engine's lackluster logging.
-
-### Outcome
+:::
+## OpenPages Integration 
+------
 Once the container has been set up and the integration saved in the OpenPages application, the translation feature will be enabled. There are two primary avenues for using this feature, translating object pages and auto-translating configuration text.
 
 On any object page, there is a translation icon near the top right of the main tile. Clicking it will send a series of requests to the endpoint that we set up, and after the translations have completed the page will update to show the translated text. The text is translated from whatever language it is in originally into the language specified by the user's locale. Each translated field will also have a button to show the original, untranslated text.
