@@ -1,0 +1,30 @@
+---
+sidebar_position: 4
+title: Takeaways
+custom_edit_url: null
+---
+<div style={{ borderBottom: '1px solid #000', marginTop: '20px', marginBottom: '20px' }}></div>
+
+## Overview
+------
+This solution document outlines how to use watson<span style={{ color: '#3a60f6' }}>x</span>.ai to translate content within the OpenPages platform into different languages. The content eligible for translation is categorized into two main groups:
+
+1. **User Fields:** Labels that provide descriptive text for controls or input fields, guiding users on actions or required information.
+2. **Headers and Labels:** Static text on the OpenPages platform, such as headers and labels, that remains consistent across the interface.
+
+**These groups can be translated through different methods:**
+
+![translation methods](../static/img/Translation_Methods.png)
+
+## Takeaway #1
+------
+While several methods are available for performing translations on the OpenPages platform, the recommended approach is to leverage the native watson<span style={{ color: '#3a60f6' }}>x</span>.ai translation capability. This allows users to create and deploy custom prompts for efficient, tailored translations, provided the payloads align with the requirements of Watson Machine Learning. For scenarios requiring additional customizations, such as incorporating custom dictionaries, a custom translation service may be more suitable.
+
+
+## Takeaway #2
+------
+Using Export Configuration is the preferred method for translating headers and labels, as it provides a bulk translation option that covers all headers and labels on the platform, including those not accessible through the OpenPages user interface translation feature. This approach significantly reduces manual effort by allowing multiple translations to be handled simultaneously, eliminating the need to translate values one by one in the UI.
+
+By streamlining the translation process, this method saves time, minimizes the risk of human error, and ensures consistency across all translated content.
+
+
