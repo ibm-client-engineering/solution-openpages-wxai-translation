@@ -130,7 +130,7 @@ async function createconfig() {
           },
         },
         navbar: {
-          title: "| Openpages watsonx.ai Translation",
+          title: "| OpenPages watsonx.ai Translation",
           logo: {
             alt: "IBM Client Engineering Logo",
             src: "img/logo.svg",
