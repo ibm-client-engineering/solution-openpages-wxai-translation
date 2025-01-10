@@ -14,7 +14,7 @@ async function createconfig() {
       mermaid: true,
     },
     themes: ["@docusaurus/theme-mermaid", "@docusaurus/theme-live-codeblock"],
-    title: "Insert Solution Name",
+    title: "Translating AI Governance Policies",
     tagline: "Build Faster. Together.",
     favicon: "img/favicon.ico",
 
@@ -130,7 +130,7 @@ async function createconfig() {
           },
         },
         navbar: {
-          title: "| OpenPages watsonx.ai Translation",
+          title: "| Translating AI Governance Policies",
           logo: {
             alt: "IBM Client Engineering Logo",
             src: "img/logo.svg",
